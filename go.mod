@@ -1,3 +1,3 @@
-module github.com/CimimUxMaio/artscii
+module github.com/cimimuxmaio/artscii
 
 go 1.16
