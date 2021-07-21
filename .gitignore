@@ -2,6 +2,7 @@
 *.png
 *.jpeg
 *.gif
+*.artscii
 
 # Binaries for programs and plugins
 *.exe

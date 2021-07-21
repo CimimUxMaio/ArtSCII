@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"image"
 	"image/color"
+	_ "image/jpeg"
 	"io"
 	"math"
 	"os"
@@ -62,15 +63,16 @@ func FromArtSCIIFile(filePath string) (*AsciiImage, error) {
 		return nil, err
 	}
 
-	i, content := 0, string(buff)
+	content := string(buff)
 	var rows [][]rune
+	var row []rune
 	for _, c := range content {
 		if c == '\n' {
-			i += 1
+			rows = append(rows, row)
+			row = []rune{}
 			continue
 		}
-
-		rows[i] = append(rows[i], c)
+		row = append(row, c)
 	}
 
 	if len(rows) < 1 {
