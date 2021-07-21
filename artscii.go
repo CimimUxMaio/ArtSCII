@@ -105,7 +105,7 @@ func (ascii *AsciiImage) ToFile(path string) (*os.File, error) {
 		return nil, err
 	}
 
-	var content []byte = []byte(string(ascii.scale))
+	var content []byte = []byte(string(ascii.scale) + "\n")
 	for _, row := range ascii.pixels {
 		content = append(content, []byte(string(row)+"\n")...)
 	}
