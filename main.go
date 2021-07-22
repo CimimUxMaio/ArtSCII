@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/sha256"
 	"fmt"
 	"log"
 	"os"
@@ -61,7 +62,6 @@ func runCreate(imagePath string, scale []rune, outputPath string) {
 }
 
 func generateOutputfileName(inputPath string) string {
-	now := time.Now()
-	timeString := fmt.Sprint(now.Day()) + fmt.Sprint(now.Month()) + fmt.Sprint(now.Year()) + fmt.Sprint(now.Hour()) + fmt.Sprint(now.Minute()) + fmt.Sprint(now.Second())
-	return inputPath + "_" + timeString
+	hash := sha256.Sum256([]byte(time.Now().String()))
+	return "photo_" + string(hash[:8])
 }
