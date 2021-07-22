@@ -62,6 +62,11 @@ func runCreate(imagePath string, scale []rune, outputPath string) {
 }
 
 func generateOutputfileName(inputPath string) string {
+	path, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	hash := fmt.Sprintf("%x", sha256.Sum256([]byte(time.Now().String())))
-	return "photo_" + string(hash[:8])
+	return path + "/output_" + string(hash[:8])
 }
